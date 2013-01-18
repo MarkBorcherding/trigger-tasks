@@ -6,16 +6,11 @@ A set of `rake` tasks for working with Trigger.io projects.
 
 Add this line to your application's Gemfile (*NOT ON ANY GEM REPO YET*):
 
-    gem 'trigger-tasks'
+    gem 'trigger-tasks', :git => 'git@github.com:MarkBorcherding/trigger-tasks.git'
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install trigger-tasks, git@github.com:MarkBorcherding/trigger-tasks.git
-
 
 Add the following to your `Rakefile`:
 
