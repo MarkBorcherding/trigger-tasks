@@ -17,7 +17,7 @@ class TriggerTasks < ::Rake::TaskLib
   private
 
   def forge args
-    sh "#{config.forge_path} #{args}"
+    sh "#{@config.forge_path} #{args}"
   end
 
   def tasks_namespace
