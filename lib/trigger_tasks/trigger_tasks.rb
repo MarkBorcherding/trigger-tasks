@@ -60,7 +60,7 @@ class TriggerTasks < ::Rake::TaskLib
     say """
 
 Uploading to TestFlight:
-              ipa: #{options.file}
+              ipa: #{file}
     release notes: #{options.notes}
 distribution list: #{options.distribution_lists}
      notify users: #{options.notify}
