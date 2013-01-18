@@ -105,7 +105,7 @@ distribution list: #{options.distribution_lists}
       replace = agree "Replace existing version? ", 'no'
 
       push_to_testflight TestFlightOptions.new :notes => release_notes,
-        :distribution_lists => distribution_lists,
+        :distribution_lists => selected_lists,
         :notify => notify_users,
         :replace => replace
 
