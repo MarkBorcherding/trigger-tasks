@@ -140,6 +140,7 @@ distribution list: #{options.distribution_lists}
 
         desc 'Run the app on the device'
         task :device  => %W{ #{tasks_namespace}:ios:run:device }
+        task :simulator  => %W{ #{tasks_namespace}:ios:run:simulator }
 
         desc 'Build the app for iOS'
         task :build do
