@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency('rake', '>= 9.x')
+  gem.add_dependency('rake', '>= 0.9.x')
   gem.add_dependency('hashie')
   gem.add_dependency('highline')
   gem.add_dependency('rest-client')
