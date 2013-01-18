@@ -1,5 +1,6 @@
 require 'rake/tasklib'
 require 'highline/import'
+require 'rest-client'
 
 require 'trigger_tasks/configuration'
 require 'trigger_tasks/test_flight_options'
@@ -13,7 +14,6 @@ class TriggerTasks < ::Rake::TaskLib
     define_tasks
   end
 
-
   private
 
   def forge args
@@ -24,14 +24,48 @@ class TriggerTasks < ::Rake::TaskLib
     @config.namespace
   end
 
-  def most_recent_ios_ipa
-    ""
+  def most_recent_ios_ipa_path
+    ipas = Pathname.glob(Pathname.pwd.join('release','ios',"*.ipa"))
+    return unless ipas
+    ipas.sort.last
   end
 
   def push_to_testflight options
+    unless file = most_recent_ios_ipa_path
+      say "No file exists to upload"
+      return
+    end
+
     options.api_token = @config.test_flight_api_token
     options.team_token = @config.test_flight_team_token
-    options.file = most_recent_ios_ipa
+    options.file = File.new(file, 'rb')
+
+    output_test_flight_options options if @config.verbose
+
+    begin
+      response = RestClient.post(@config.test_flight_api_url, options, :accept => :json)
+    rescue => e
+      response = e.response
+    end
+
+    if [200, 201].include? response.code
+      puts "Upload to TestFlight complete."
+    else
+      puts "Upload to TestFlight failed. (#{response})"
+    end
+
+  end
+
+  def output_test_flight_options options
+    say """
+
+Uploading to TestFlight:
+              ipa: #{options.file}
+    release notes: #{options.notes}
+distribution list: #{options.distribution_lists}
+     notify users: #{options.notify}
+          replace: #{options.replace}
+"""
   end
 
   def to_bool s
@@ -72,7 +106,8 @@ class TriggerTasks < ::Rake::TaskLib
 
       push_to_testflight TestFlightOptions.new :notes => release_notes,
         :distribution_lists => distribution_lists,
-        :notify => notify_users
+        :notify => notify_users,
+        :replace => replace
 
     end
   end

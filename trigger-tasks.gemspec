@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency('rake', '>= 9.x')
   gem.add_dependency('hashie')
   gem.add_dependency('highline')
+  gem.add_dependency('rest-client')
 end
