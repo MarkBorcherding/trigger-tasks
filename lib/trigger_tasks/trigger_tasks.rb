@@ -118,8 +118,9 @@ distribution list: #{options.distribution_lists}
     desc 'Open the app in the device'
     task :device => "#{tasks_namespace}:#{platform}:device"
 
-    desc 'Open the app in the simulator'
+    desc 'Open the app in the simulator (aliased to "rake sim")'
     task :simlator => "#{tasks_namespace}:#{platform}:simulator"
+    task :sim => "#{tasks_namespace}:#{platform}:simulator"
 
     desc 'Open the app in the iOS simulator'
     task tasks_namespace => "#{tasks_namespace}:#{platform}"
