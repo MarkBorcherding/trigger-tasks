@@ -88,6 +88,11 @@ rake testflight                      # Deploy to TestFlight
 
 This is still very rough and may not work in all situations.
 
+# TODO
+
+* Allow passing TestFlight parameters on the command line to hook it entirely into the automated build process
+* Get other platforms' commands. (e.g. Android, web, Windows)
+
 ## Contributing
 
 1. Fork it
