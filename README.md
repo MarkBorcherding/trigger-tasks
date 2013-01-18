@@ -67,10 +67,27 @@ TriggerTasks.new do |config|
   config.test_flight_team_token # Your TestFlight Team Token.
   config.test_flight_distribution_lists # An array of distribution lists in TestFlight.
 end
+```
 
 ## Usage
 
 Run `rake -T` to see your new tasks.
+
+```
+rake device                          # Open the app in the device
+rake forge                           # Open the app in the iOS simulator
+rake forge:ios                       # Open the app in the iOS simulator
+rake forge:ios:build                 # Build the app for iOS
+rake forge:ios:device                # Run the app on the device
+rake forge:ios:package               # Package the app for iOS deveployment in the simulator or device
+rake forge:ios:run                   # Run the app in the location specified in the local_config.json
+rake forge:ios:run:device            # Run the app in the simulator
+rake forge:ios:run:simulator         # Run the device on the device
+rake forge:ios:run:simulator:ipad    # Force the app to run in the iPad simulator
+rake forge:ios:run:simulator:iphone  # Force the app to run in the iPhone simulator
+rake simlator                        # Open the app in the simulator
+rake testflight                      # Deploy to TestFlight
+```
 
 # Disclaimer
 
