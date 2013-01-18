@@ -40,7 +40,15 @@ class TriggerTasks < ::Rake::TaskLib
     options.team_token = @config.test_flight_team_token
     options.file = File.new(file, 'rb')
 
-    output_test_flight_options options if @config.verbose
+    if @config.verbose
+      say """Uploading to TestFlight:
+                ipa: #{file}
+      release notes: #{options.notes}
+  distribution list: #{options.distribution_lists}
+       notify users: #{options.notify}
+            replace: #{options.replace}
+  """
+    end
 
     begin
       response = RestClient.post(@config.test_flight_api_url, options, :accept => :json)
@@ -54,18 +62,6 @@ class TriggerTasks < ::Rake::TaskLib
       puts "Upload to TestFlight failed. (#{response})"
     end
 
-  end
-
-  def output_test_flight_options options
-    say """
-
-Uploading to TestFlight:
-              ipa: #{file}
-    release notes: #{options.notes}
-distribution list: #{options.distribution_lists}
-     notify users: #{options.notify}
-          replace: #{options.replace}
-"""
   end
 
   def to_bool s
@@ -82,7 +78,7 @@ distribution list: #{options.distribution_lists}
 
   def test_flight_tasks
     desc 'Deploy to TestFlight'
-    task :testflight do
+    task :testflight  => "#{tasks_namespace}:ios:package" do
 
       release_notes = ask 'Enter release notes: '
 
