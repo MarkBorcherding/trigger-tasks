@@ -20,4 +20,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency('hashie')
   gem.add_dependency('highline')
   gem.add_dependency('rest-client')
+  gem.add_dependency('sinatra')
 end

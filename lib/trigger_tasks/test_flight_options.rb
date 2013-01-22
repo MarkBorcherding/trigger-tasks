@@ -1,6 +1,6 @@
 require 'hashie'
 
-class TestFlightOptions < Hashie::Dash
+class TriggerTasks::TestFlightOptions < Hashie::Dash
   [ :api_token,
     :team_token,
     :file,

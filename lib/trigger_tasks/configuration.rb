@@ -1,6 +1,6 @@
 require 'hashie'
 
-class Configuration < Hashie::Dash
+class TriggerTasks::Configuration < Hashie::Dash
   property :verbose, :required => true, :default => true
 
   property :forge_path, :required => true, :default => 'forge'
@@ -11,4 +11,10 @@ class Configuration < Hashie::Dash
   property :test_flight_api_token, :default => ENV['TEST_FLIGHT_API_TOKEN']
   property :test_flight_team_token
   property :test_flight_distribution_lists
+
+  property :webserver, required: true, default: true
+  property :webserver_port, required: true, default: 4567
+  property :webserver_source_folder, required: true, default: 'src'
+  property :webserver_default_file, required: true, default: 'index.html'
+
 end

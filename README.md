@@ -26,7 +26,7 @@ You can configure the tasks if you wish:
 ```ruby
 require 'trigger-tasks'
 
-TriggerTasks.new do |config|
+TriggerTasks::TaskLib.new do |config|
   config.namespace = 'foo'
 end
 ```
@@ -36,7 +36,7 @@ If you want to use the `testflight` task you will need to add some config to the
 ```ruby
 require 'trigger-tasks'
 
-TriggerTasks.new do |config|
+TriggerTasks::TaskLib.new do |config|
   config.test_flight_team_token = '<< your team token >>'
   config.test_flight_distribution_lists = ['your', 'distribution', 'lists']
 end
@@ -51,7 +51,7 @@ to the `.gitignore` to avoid mucking with the environment.
 There are several options that can be configured in the setup block.
 
 ```ruby
-TriggerTasks.new do |config|
+TriggerTasks::TaskLib.new do |config|
   config.verbose                # Extra console output default = true
   config.forge_path             # The path to the forge executable. default = 'forge'
   config.namespace              # The namespace of the rake tasks. default = 'forge'
