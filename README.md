@@ -56,6 +56,7 @@ TriggerTasks::TaskLib.new do |config|
   config.forge_path             # The path to the forge executable. default = 'forge'
   config.namespace              # The namespace of the rake tasks. default = 'forge'
   config.default_platform       # The default platform when running 'rake device'. default = 'ios'
+  config.build_task             # The rake task to invoke before forge builds. (Optional)
 
   config.test_flight_api_url    # The url of TestFlight. default = "https://testflightapp.com/api/builds.json"
   config.test_flight_api_token  # Your TestFlight API token. default = ENV['TEST_FLIGHT_API_TOKEN']

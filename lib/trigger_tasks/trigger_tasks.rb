@@ -140,6 +140,10 @@ module TriggerTasks
 
           desc 'Build the app for iOS'
           task :build do
+
+            # If we have a default build task, run that before
+            Rake::Task[@config.build_task].invoke if @config.build_task
+
             forge 'build ios'
           end
 

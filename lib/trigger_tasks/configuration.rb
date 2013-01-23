@@ -3,6 +3,8 @@ require 'hashie'
 class TriggerTasks::Configuration < Hashie::Dash
   property :verbose, :required => true, :default => true
 
+  property :build_task
+
   property :forge_path, :required => true, :default => 'forge'
   property :namespace, :required => true, :default => 'forge'
   property :default_platform, :default => 'ios'
